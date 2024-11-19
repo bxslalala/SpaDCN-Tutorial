@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; SpaDCN v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b30c7235"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial : 10x Visium(Breast Cancer)" href="run_dlpfc.html" />
+    <link rel="prev" title="SpaDCN" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SpaDCN
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-python-environment">1. Prepare Python environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-r-environment">2. Prepare R environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-dependency-packages">3. Install dependency packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-spagt">4. Install SpaGT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="run_dlpfc.html">Tutorial : 10x Visium(Breast Cancer)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SpaDCN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<section id="prepare-python-environment">
+<h2>1. Prepare Python environment<a class="headerlink" href="#prepare-python-environment" title="Permalink to this heading"></a></h2>
+<p>To install <cite>SpaGT</cite>, we recommend using the [Anaconda](<a class="reference external" href="https://anaconda.org/">https://anaconda.org/</a>) or [Miniconda](<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>) Python Distribution and creating an isolated environment, so that the <cite>SpaGT</cite> and dependencies don’t conflict or interfere with other packages or applications. Please install the <cite>conda</cite> in advance.</p>
+<p>Create environment
+First, please download or clone the <cite>SpaGT.zip</cite> file from github <cite>Code</cite> and unzip it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span>
+</pre></div>
+</div>
+<p>The entire installation process takes place in the <cite>SpaGT</cite> directory, so first go to that directory by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">SpaGT</span>
+</pre></div>
+</div>
+<p>We recommend using a conda environment to configure SpaGT. To create and activate the environment <cite>SpaGT_ENV</cite>, run the following command in <cite>bash</cite> or <cite>Anaconda Powershell Prompt</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">SpaGT_ENV</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">SpaGT_ENV</span>
+</pre></div>
+</div>
+</section>
+<section id="prepare-r-environment">
+<h2>2. Prepare R environment<a class="headerlink" href="#prepare-r-environment" title="Permalink to this heading"></a></h2>
+<p>The <cite>SpaGT</cite> uses the <cite>mclust</cite> package in the <cite>R</cite> language environment, and links it in a <cite>Python</cite> environment via <cite>rpy2</cite>. You can install the <cite>R</cite> language environment under <cite>SpaGT_ENV</cite> environment by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">base</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">mclust</span><span class="o">=</span><span class="mf">5.4.10</span>
+</pre></div>
+</div>
+</section>
+<section id="install-dependency-packages">
+<h2>3. Install dependency packages<a class="headerlink" href="#install-dependency-packages" title="Permalink to this heading"></a></h2>
+<p>If you want to install <cite>SpaGT</cite>, you can install the dependency packages using <cite>pip</cite> by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="install-spagt">
+<h2>4. Install SpaGT<a class="headerlink" href="#install-spagt" title="Permalink to this heading"></a></h2>
+<p>Install the <cite>SpaGT</cite> package under <a href="#id1"><span class="problematic" id="id2">`</span></a>SpaGT_ENV`environment by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">setuptools</span><span class="o">==</span><span class="mf">58.2.0</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Here, the environment configuration is completed!</p>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="SpaDCN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="run_dlpfc.html" class="btn btn-neutral float-right" title="Tutorial : 10x Visium(Breast Cancer)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, xiaosheng bai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
