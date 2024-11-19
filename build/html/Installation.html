@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial : 10x Visium(Breast Cancer)" href="run_dlpfc.html" />
+    <link rel="next" title="Tutorial : 10x Visium" href="run_dlpfc.html" />
     <link rel="prev" title="SpaDCN" href="index.html" /> 
 </head>
 
@@ -49,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#prepare-python-environment">1. Prepare Python environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prepare-r-environment">2. Prepare R environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-dependency-packages">3. Install dependency packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-spagt">4. Install SpaGT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-spadcn">4. Install SpaDCN</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="run_dlpfc.html">Tutorial : 10x Visium(Breast Cancer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_dlpfc.html">Tutorial : 10x Visium</a></li>
 </ul>
 
         </div>
@@ -83,25 +83,25 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <section id="prepare-python-environment">
 <h2>1. Prepare Python environment<a class="headerlink" href="#prepare-python-environment" title="Permalink to this heading"></a></h2>
-<p>To install <cite>SpaGT</cite>, we recommend using the [Anaconda](<a class="reference external" href="https://anaconda.org/">https://anaconda.org/</a>) or [Miniconda](<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>) Python Distribution and creating an isolated environment, so that the <cite>SpaGT</cite> and dependencies don’t conflict or interfere with other packages or applications. Please install the <cite>conda</cite> in advance.</p>
+<p>To install <cite>SpaDCN</cite>, we recommend using the [Anaconda](<a class="reference external" href="https://anaconda.org/">https://anaconda.org/</a>) or [Miniconda](<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>) Python Distribution and creating an isolated environment, so that the <cite>SpaDCN</cite> and dependencies don’t conflict or interfere with other packages or applications. Please install the <cite>conda</cite> in advance.</p>
 <p>Create environment
-First, please download or clone the <cite>SpaGT.zip</cite> file from github <cite>Code</cite> and unzip it.</p>
+First, please download or clone the <cite>SpaDCN.zip</cite> file from github <cite>Code</cite> and unzip it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span>
 </pre></div>
 </div>
-<p>The entire installation process takes place in the <cite>SpaGT</cite> directory, so first go to that directory by:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">SpaGT</span>
+<p>The entire installation process takes place in the <cite>SpaDCN</cite> directory, so first go to that directory by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">SpaDCN</span>
 </pre></div>
 </div>
-<p>We recommend using a conda environment to configure SpaGT. To create and activate the environment <cite>SpaGT_ENV</cite>, run the following command in <cite>bash</cite> or <cite>Anaconda Powershell Prompt</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">SpaGT_ENV</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="n">SpaGT_ENV</span>
+<p>We recommend using a conda environment to configure SpaDCN. To create and activate the environment <cite>SpaDCN_ENV</cite>, run the following command in <cite>bash</cite> or <cite>Anaconda Powershell Prompt</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">SpaDCN_ENV</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">SpaDCN_ENV</span>
 </pre></div>
 </div>
 </section>
 <section id="prepare-r-environment">
 <h2>2. Prepare R environment<a class="headerlink" href="#prepare-r-environment" title="Permalink to this heading"></a></h2>
-<p>The <cite>SpaGT</cite> uses the <cite>mclust</cite> package in the <cite>R</cite> language environment, and links it in a <cite>Python</cite> environment via <cite>rpy2</cite>. You can install the <cite>R</cite> language environment under <cite>SpaGT_ENV</cite> environment by:</p>
+<p>The <cite>SpaDCN</cite> uses the <cite>mclust</cite> package in the <cite>R</cite> language environment, and links it in a <cite>Python</cite> environment via <cite>rpy2</cite>. You can install the <cite>R</cite> language environment under <cite>SpaDCN_ENV</cite> environment by:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">base</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">mclust</span><span class="o">=</span><span class="mf">5.4.10</span>
 </pre></div>
@@ -109,14 +109,14 @@ First, please download or clone the <cite>SpaGT.zip</cite> file from github <cit
 </section>
 <section id="install-dependency-packages">
 <h2>3. Install dependency packages<a class="headerlink" href="#install-dependency-packages" title="Permalink to this heading"></a></h2>
-<p>If you want to install <cite>SpaGT</cite>, you can install the dependency packages using <cite>pip</cite> by:</p>
+<p>If you want to install <cite>SpaDCN</cite>, you can install the dependency packages using <cite>pip</cite> by:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </section>
-<section id="install-spagt">
-<h2>4. Install SpaGT<a class="headerlink" href="#install-spagt" title="Permalink to this heading"></a></h2>
-<p>Install the <cite>SpaGT</cite> package under <a href="#id1"><span class="problematic" id="id2">`</span></a>SpaGT_ENV`environment by:</p>
+<section id="install-spadcn">
+<h2>4. Install SpaDCN<a class="headerlink" href="#install-spadcn" title="Permalink to this heading"></a></h2>
+<p>Install the <cite>SpaDCN</cite> package under <a href="#id1"><span class="problematic" id="id2">`</span></a>SpaDCN_ENV`environment by:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">setuptools</span><span class="o">==</span><span class="mf">58.2.0</span>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
@@ -132,7 +132,7 @@ First, please download or clone the <cite>SpaGT.zip</cite> file from github <cit
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="SpaDCN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="run_dlpfc.html" class="btn btn-neutral float-right" title="Tutorial : 10x Visium(Breast Cancer)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="run_dlpfc.html" class="btn btn-neutral float-right" title="Tutorial : 10x Visium" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
