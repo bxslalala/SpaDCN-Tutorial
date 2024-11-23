@@ -29,3 +29,13 @@ html_theme_options = {
     'navigation_depth': 4,
     'collapse_navigation': False,
 }
+
+
+html_context = {
+    "display_github": True,
+    "github_user": 'bxslalala',
+    "github_repo": 'SpaDCN_Tutorial',
+    "githun_version": "mian",
+    "conf_py_path": "/source/",
+    
+}

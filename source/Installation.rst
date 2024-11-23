@@ -44,16 +44,6 @@ If you want to install `SpaDCN`, you can install the dependency packages using `
 
     pip install -r requirements.txt
 
-4. Install SpaDCN
----------------------
-Install the `SpaDCN` package under `SpaDCN_ENV`environment by:
-
-.. code-block:: python
-
-    pip install setuptools==58.2.0
-    python setup.py build
-    python setup.py install
-
 Here, the environment configuration is completed!
 
 ---
