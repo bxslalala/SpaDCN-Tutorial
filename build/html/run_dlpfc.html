@@ -135,8 +135,8 @@ AnnData object with n_obs × n_vars = 4226 × 33538
     obsp: &#39;connectivities&#39;, &#39;distances&#39;
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features_tensor</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;embedding&#39;</span><span class="p">]</span>
@@ -144,24 +144,25 @@ AnnData object with n_obs × n_vars = 4226 × 33538
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: adata.X seems to be already log-transformed.
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">commot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./commot_user_database_total_total.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">commot_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">commot</span><span class="p">)</span>  <span class="c1"># 用你的矩阵数据替代这里</span>
+<span class="n">commot_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">commot</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tmat</span><span class="p">,</span> <span class="n">edge_adj</span><span class="p">,</span> <span class="n">adj</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">edge_features</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">conns</span><span class="p">,</span> <span class="n">commot_matrix</span><span class="p">,</span> <span class="n">features_tensor</span><span class="p">)</span>
@@ -178,14 +179,12 @@ d:\html\spaDCN\3\utils.py:202: UserWarning: torch.sparse.SparseTensor(indices, v
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">64</span>
 <span class="n">out_dim</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">dropout_ratio</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">weight_decay</span> <span class="o">=</span> <span class="mf">5e-4</span>
 
 <span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -195,18 +194,17 @@ d:\html\spaDCN\3\utils.py:202: UserWarning: torch.sparse.SparseTensor(indices, v
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">domain</span> <span class="o">=</span> <span class="s1">&#39;mclust&#39;</span> <span class="c1"># louvain kmeans mclust leiden</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda:0&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
-<span class="c1"># device = torch.device(&#39;cpu&#39; if torch.cuda.is_available() else &#39;cuda:0&#39;)</span>
 <span class="n">device</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -215,7 +213,7 @@ device(type=&#39;cuda&#39;, index=0)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">SpaDCN</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">edge_features</span><span class="p">,</span> <span class="n">edge_adj</span><span class="p">,</span> <span class="n">adj</span><span class="p">,</span> <span class="n">Tmat</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">,</span> <span class="n">dropout_ratio</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -261,7 +259,7 @@ Initializing cluster centers with mclust
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Training Progress: 100%|██████████| 10/10 [00:04&lt;00:00,  2.13it/s]
+Training Progress: 100%|██████████| 10/10 [00:03&lt;00:00,  3.07it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -281,7 +279,7 @@ Training complete.
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -290,7 +288,7 @@ array([2, 2, 2, ..., 2, 2, 2], dtype=int64)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="p">,</span> <span class="n">ARI</span><span class="p">,</span> <span class="n">ARI_refine</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">domain</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -302,13 +300,12 @@ array([2, 2, 2, ..., 2, 2, 2], dtype=int64)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-pca_num:  19 class : 7
 Adjusted rand index = 0.583
 refine Adjusted rand index = 0.585
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#A7CCE0&quot;</span><span class="p">,</span><span class="s2">&quot;#B0E192&quot;</span><span class="p">,</span><span class="s2">&quot;#FA9D9A&quot;</span><span class="p">,</span><span class="s2">&quot;#F9C37A&quot;</span><span class="p">,</span><span class="s2">&quot;#CBB2D4&quot;</span><span class="p">,</span><span class="s2">&quot;#FCFFA4&quot;</span><span class="p">,</span><span class="s2">&quot;#EF7D77&quot;</span><span class="p">]</span>
@@ -320,9 +317,9 @@ refine Adjusted rand index = 0.585
     <span class="n">palette</span><span class="o">=</span><span class="n">plot_color</span><span class="p">,</span>
     <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;right margin&#39;</span><span class="p">,</span>
     <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SpaGEN (ARI=</span><span class="si">%.3f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI_refine</span>]
+    <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SpaDCN (ARI=</span><span class="si">%.3f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI_refine</span>]
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># 现在显示图像</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -330,7 +327,7 @@ refine Adjusted rand index = 0.585
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/run_dlpfc_12_0.png" src="_images/run_dlpfc_12_0.png" />
+<img alt="_images/run_dlpfc_11_0.png" src="_images/run_dlpfc_11_0.png" />
 </div>
 </div>
 </section>
