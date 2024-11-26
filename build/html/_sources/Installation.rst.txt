@@ -10,7 +10,7 @@ First, please download or clone the `SpaDCN.zip` file from github `Code` and unz
 
 .. code-block:: python
 
-    git clone 
+    git clone https://github.com/bxslalala/SpaDCN.git
 
 
 The entire installation process takes place in the `SpaDCN` directory, so first go to that directory by:
